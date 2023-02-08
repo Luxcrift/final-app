@@ -47,6 +47,12 @@ pipeline {
                 sh 'docker push luxcrift/ms-shopping-cart:1.0'
             }
         }
+        stage('Deploy to EC2') {
+            steps {
+                sh 'scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@3.239.34.112:/home/ec2-user'
+                sh 'ssh ec2-user@3.239.34.112 docker-compose up -d'
+            }
+        }
 
     } //--end stages
 
