@@ -31,25 +31,26 @@ pipeline {
         } 
         stage('Docker Build') {
             steps {
-               sh './automation/docker_build.sh'
+               sh 'docker build -t ms-frontend:1.0 frontend'
+               sh 'docker build -t ms-products:1.0 products'
+               sh 'docker build -t ms-shopping-cart:1.0 shopping-cart'
             }
         }
         stage('Docker Push to Docker-hub') {
             steps {
-                sh './automation/docker_push.sh'
+                sh ''
             }
         }
         stage('Deploy to EC2') {
             steps {
                 sshagent(['ssh-ec2']){
-                    sh './automation/deploy_to_ec2_compose.sh'
+                    sh ''
                 }
             }
         }
         stage('Notify Telegram') {
             steps {
-                sh 'chmod +x automation/telegram.sh'
-                sh './automation/telegram.sh'
+                
             }
         }
 
