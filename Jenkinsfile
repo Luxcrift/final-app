@@ -41,8 +41,10 @@ pipeline {
                 sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
                 sh 'docker tag ms-frontend:1.0 luxcrift/ms-frontend:1.0'
                 sh 'docker push luxcrift/ms-frontend:1.0'
-                // sh 'docker push luxcrift/ms-products:1.0'
-                // sh 'docker push luxcrift/ms-shopping-cart:1.0'
+                sh 'docker tag ms-product:1.0 luxcrift/ms-product:1.0'
+                sh 'docker push luxcrift/ms-products:1.0'
+                sh 'docker tag ms-shopping-cart:1.0 luxcrift/ms-shopping-cart:1.0'
+                sh 'docker push luxcrift/ms-shopping-cart:1.0'
             }
         }
 
