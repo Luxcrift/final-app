@@ -49,8 +49,10 @@ pipeline {
         }
         stage('Deploy to EC2') {
             steps {
-                sh 'scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@3.239.34.112:/home/ec2-user'
-                sh 'ssh ec2-user@3.239.34.112 docker-compose up -d'
+                sshagent(['ssh-ec2']){
+                    sh 'scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@3.239.34.112:/home/ec2-user'
+                    sh 'ssh ec2-user@3.239.34.112 docker-compose up -d'
+                }   
             }
         }
 
