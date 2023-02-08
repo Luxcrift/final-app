@@ -1,0 +1,36 @@
+version: '3'
+services:
+  frontend:
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    image: ms-frontend:1.0
+    environment:
+      PRODUCTS_SERVICE: products
+      SHOPPING_CART_SERVICE: shopping
+    networks:
+      - diosito
+    depends_on:
+      - products
+      - shopping
+  products:
+    container_name: products
+    restart: always
+    ports:
+      - "3001:3001"
+    image: ms-products:1.0
+    networks:
+      - diosito 
+  shopping:
+    container_name: shopping
+    restart: always
+    ports:
+      - "3002:3002"
+    image: ms-shopping-cart:1.0
+    networks:
+      - diosito
+
+networks:
+  diosito:
+    driver: bridge

@@ -1,0 +1,17 @@
+{
+    "environments":{
+        "master":{
+            "EC2INSTANCE":"ec2-user@3.238.8.78",
+            "Author":"grupoplay"
+        },
+        "testing":{
+            "EC2INSTANCE":"ec2-user@44.204.101.107",
+            "Author":"grupoplay"
+        },
+        "develop":{
+            "EC2INSTANCE":"ec2-user@3.239.34.112",
+            "Author":"grupoplay"
+        }
+
+    }
+}
