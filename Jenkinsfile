@@ -36,23 +36,6 @@ pipeline {
                sh 'docker build -t ms-shopping-cart:1.0 shopping-cart'
             }
         }
-        stage('Docker Push to Docker-hub') {
-            steps {
-                sh ''
-            }
-        }
-        stage('Deploy to EC2') {
-            steps {
-                sshagent(['ssh-ec2']){
-                    sh ''
-                }
-            }
-        }
-        stage('Notify Telegram') {
-            steps {
-                
-            }
-        }
 
     } //--end stages
 
