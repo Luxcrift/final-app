@@ -1,14 +1,9 @@
 pipeline {
     agent any
     environment {  
-        DOCKER_HUB_LOGIN = credentials('docker-hub-roxs')
+        DOCKER_HUB_LOGIN = credentials('docker-hub')
     }
     stages {
-        stage('Automation') {
-            steps {
-               sh 'git clone -b master https://github.com/Luxcrift/automation.git'
-            }
-        }
         stage('install dependencies') {
             agent{
                 docker {
